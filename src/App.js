@@ -10,12 +10,15 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() {
+  const [xIsNext, setXisNext] = useState(true)
   const [squares, setSquares] = useState(Array(9).fill(null))
 
-  function handleClick(i) {
+  function handleClick(e) {
     const nextSquare = [...squares]
-    nextSquare[i] = 'X'
+    xIsNext ? (nextSquare[e] = 'X') : (nextSquare[e] = 'O')
+
     setSquares(nextSquare)
+    setXisNext(!xIsNext)
     console.log('clicked')
   }
 
